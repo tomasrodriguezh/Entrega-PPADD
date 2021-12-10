@@ -43,27 +43,27 @@ def fun(cripto, moneda, periodo, fecha_desde= 0, vwap_calc= 5): #función que de
     df, last = k.get_ohlc_data(par_solicitado, interval=periodo, since=fecha_unix, ascending=True)
     df.head()
     pv_fun = lambda a, b, c, d, e: (a + b + c + d) * e / 4
-    df["pv"] = pv_fun(df["open"], df["high"], df["low"], df["close"], df["volume"])
+    df["pv"] = pv_fun(df["open"], df["high"], df["low"], df["close"], df["volume"]) #hacemos un ponderado del precio por la cantidad de monedas que se vendieron en el periodo
 
-    df["vwap_calc"] = df.pv.rolling(window=vwap_calc, min_periods=1).sum() / df.volume.rolling(window=vwap_calc, min_periods=1).sum()
+    df["vwap_calc"] = df.pv.rolling(window=vwap_calc, min_periods=1).sum() / df.volume.rolling(window=vwap_calc, min_periods=1).sum() #utilizamos los periodos anteriores para generar el vwap, el usuario puede solicitar la cantidad de velas para hacer el VWAP
 
     fig = make_subplots(rows=2, cols=1, shared_xaxes=True,
                         vertical_spacing=0.03, subplot_titles=('OHLC', 'Volume'),
-                        row_width=[0.2, 0.7])
+                        row_width=[0.2, 0.7]) #dividimos el grafico en 2, para poner una gráfica de OHLC y otra del volumen
     fig.add_trace(go.Candlestick(x=df.index,
                                          open=df['open'],
                                          high=df['high'],
                                          low=df['low'],
                                          close=df['close'],
                                          name="OHLC"),
-                  row=1, col=1)
+                  row=1, col=1) #Canddlesticks chart
 
-    fig.add_trace(go.Scatter(x=df.index, y=df["vwap_calc"], name="VWAP", line=dict(color='purple', width=1)), row=1, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df["vwap_calc"], name="VWAP", line=dict(color='purple', width=1)), row=1, col=1) #Agregar el VWAP
 
-    fig.add_trace(go.Bar(x=df.index, y=df['volume'], showlegend=False), row=2, col=1)
+    fig.add_trace(go.Bar(x=df.index, y=df['volume'], showlegend=False), row=2, col=1) #segundo gráfico del volumen
     fig.update_xaxes(
         title_text='Date',
-        rangeslider_visible=True)
+        rangeslider_visible=False)
     fig.update_layout(xaxis_rangeslider_visible=False,
         title={
             'text': 'Pair ' + cripto + ' ' + moneda,
