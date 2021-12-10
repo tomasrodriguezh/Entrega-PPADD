@@ -1,5 +1,5 @@
 # Entrega-PPRDD
-Entrega del curso Python para Recogida de Datos
+Entrega del curso Python para Análisis de Datos
 
 Mi Proyecto con Criptomonedas
 
