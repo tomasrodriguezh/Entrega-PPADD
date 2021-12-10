@@ -1,0 +1,6 @@
+krakenex
+pykrakenapi
+plotly
+streamlit
+numpy
+datetime
