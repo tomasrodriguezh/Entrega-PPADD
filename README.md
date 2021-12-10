@@ -3,7 +3,7 @@ Entrega del curso Python para Recogida de Datos
 
 Mi Proyecto con Criptomonedas
 
-Este proyecto tiene la finalidad de graficar todos los pares disponibles de criptomonedas de la API de Kraken. 
+Esta aplicación tiene la finalidad de graficar todos los pares disponibles de criptomonedas de la API de Kraken. 
 Los gráficos incluidos son el OHLC, el VWAP y los volúmenes de venta de la criptomoneda deseada por el usuario. 
 El usuario tiene la capacidad de elegir tanto la cripto deseada, como el par sobre la cual quiere ver el precio y volumen de las transacciones realizadas. 
 Además, puede elegir el intervalo de tiempo sobre los que se calculan los candlesticks, así como la cantidad de candlesticks por los cuales se realiza el VWAP. 
