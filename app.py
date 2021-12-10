@@ -61,9 +61,6 @@ def fun(cripto, moneda, periodo, fecha_desde= 0, vwap_calc= 5): #función que de
     fig.add_trace(go.Scatter(x=df.index, y=df["vwap_calc"], name="VWAP", line=dict(color='purple', width=1)), row=1, col=1) #Agregar el VWAP
 
     fig.add_trace(go.Bar(x=df.index, y=df['volume'], showlegend=False), row=2, col=1) #segundo gráfico del volumen
-    fig.update_xaxes(
-        title_text='Date',
-        rangeslider_visible=False)
     fig.update_layout(xaxis_rangeslider_visible=False,
         title={
             'text': 'Pair ' + cripto + ' ' + moneda,
