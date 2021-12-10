@@ -75,23 +75,23 @@ def fun(cripto, moneda, periodo, fecha_desde= 0, vwap_calc= 5): #función que de
 
 
 def warning(cripto, data, vwap_req, fecha_minima_requerida): #comentarios en la aplicación
-    if 0 in data["volume"].to_list():
+    if 0 in data["volume"].to_list(): # si es que no se venden monedas en el tiempo deseado, decir que cambie de intervalo.
         a = st.warning(
         "In some time periods there were none transactions for the pair " + criptomoneda + monedita + ". Please select a wider interval so the Canddlesticks chart can be improved.")
         return a
-    elif data.index.min() >= fecha_minima_requerida + timedelta(days=16):
+    elif data.index.min() >= fecha_minima_requerida + timedelta(days=16): #como el calendario no funciona muy bien con intervalos de tiempo muy largo, este comando les dice que no se puede obtener la fecha que se quiere
         b = st.warning("Unfortunately in Kraken there are only records of transactions for the pair " + criptomoneda + monedita + " since " + str(data.index.min()) + " . Please select this or a higher initial date.")
         return b
-    elif cripto[0] == "X":
+    elif cripto[0] == "X": #para dar un dato de la moneda que se está buscando
         c = st.info(
             'Did you know that any asset that acts as a “supranational” currency that isn’t bound to any particular country borders begins with the letter X? Such as XAU in gold and XBT in Bitcoin markets.')
         return c
-    elif len(data.volume) < vwap_req:
+    elif len(data.volume) < vwap_req: #warning sobre el vwap
         d = st.warning("There are not enough canddlesticks for this time period, therefore the VWAP can't be calculated as requested. Please select a different time interval or another lenght for the VWAP.")
         return d
     else:
-        d = ""
-        return d
+        e = ""
+        return e
 
 
 # Trabajo con Streamlit y el modelamiento de la página web
@@ -117,7 +117,7 @@ monedita = st.sidebar.selectbox(
     "Desired Pair", lista_monedas_disponibles, index=default_ix_2
 )
 
-# Tercera selectbox: intervalo de tiempo entre cada Candlestick
+# Tercera selectbox: intervalo de tiempo entre cada Candlestick. Hago un diccionario para que al usuario se le haga más fácil saber qué intervalo elige
 intervalo_tiempo_sel = st.sidebar.selectbox(
     "Time Interval between each Candlestick", ["1 Minute", "5 Minutes", "15 Minutes", "30 Minutes", "1 Hour", "4 Hours", "1 Day", "7 Days", "15 Days"]
 )
