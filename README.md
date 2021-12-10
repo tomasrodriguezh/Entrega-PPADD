@@ -29,10 +29,10 @@ Por otro lado, los gráficos fueron creados con plotly.
 Esta es una libreria muy interesante porque te permite hacer zoom dentro del mismo gráfico y obtener mayor detalle de los datos.
 Al mismo tiempo uno puede alargar el el gráfico para tenerlo en pantalla completa, entre otras opciones.
 
-La versión web del proyecto está en el siguiente link: https://share.streamlit.io/tomasrodriguezh/entrega-pprdd/main/app.py 
+La versión web del proyecto está en el siguiente link: https://share.streamlit.io/tomasrodriguezh/entrega-ppadd/main/app.py 
 
 Para poder utilizar el código hace falta tener descargado Pipenv. 
-En PyCharm: Una vez abierto hay que escribir en la terminal $ pipenv install , 
+En PyCharm o VSC: Una vez abierto hay que escribir en la terminal $ pipenv install , 
 lo que descargará todos los paquetes utilizados en el ambiente virtual. 
 Ya descargados los paquetes, simplemente hay que escribir en la terminal $ streamlit run app.py , 
 lo que correrá la aplicación y abrirá un local host en el navegador. 
